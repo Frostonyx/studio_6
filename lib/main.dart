@@ -77,6 +77,43 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Text(location["city"]!);
+    return const Scaffold(body: BoxPlaceHolder(height: 500, width: null));
+  }
+}
+
+class BoxPlaceHolder extends StatelessWidget {
+  final double? height;
+  final double? width;
+  const BoxPlaceHolder({
+    super.key,
+    required this.height,
+    required this.width
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // materialApp with debugbanner false
+    return MaterialApp( 
+      // theme of the app
+      theme: ThemeData(primarySwatch: Colors.green), 
+      debugShowCheckedModeBanner: false,
+      // scaffold with app
+      home: Scaffold( 
+        // Decoratedbox which takes the 
+        // decoration and child property
+        body: DecoratedBox( 
+          // BoxDecoration takes the image
+          decoration: BoxDecoration( 
+            // Image set to background of the body
+            image: DecorationImage( 
+                image: AssetImage("assets/images/bg.jpg"), fit: BoxFit.cover),
+          ),
+          child: Center( 
+              child: Text('Location')
+              )
+              ),
+        ),
+      );
+    
   }
 }
